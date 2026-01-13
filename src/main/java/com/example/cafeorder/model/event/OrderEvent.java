@@ -1,0 +1,15 @@
+package com.example.cafeorder.model.event;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+@Builder
+public class OrderEvent {
+
+	private Long userId;
+	private Long menuId;
+	private String paidAt;
+}
