@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.cafeorder.model.dto.PointChargeRequest;
 import com.example.cafeorder.model.dto.PointChargeResponse;
 import com.example.cafeorder.entity.User;
 import com.example.cafeorder.repository.UserRepository;
@@ -18,7 +19,11 @@ public class PointService {
 	private final UserRepository userRepository;
 
 	@Transactional
-	public PointChargeResponse chargePoints(Long userId, Integer amount) {
+	public PointChargeResponse chargePoints(PointChargeRequest pointChargeRequest) {
+
+		Long userId = pointChargeRequest.getUserId();
+		Integer amount = pointChargeRequest.getAmount();
+
 		if (amount == null || amount <= 0) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "charge amount must be positive");
 		}

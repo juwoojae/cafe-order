@@ -27,7 +27,7 @@ public class OrderService {
 	private final DataPlatformClient dataPlatformClient;
 
 	@Transactional
-	public void placeOrder(OrderRequest orderRequest) {
+	public void completeOrder(OrderRequest orderRequest) {
 
 		String paidAt = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 		Menu menu = menuRepository.findById(orderRequest.getMenuId())

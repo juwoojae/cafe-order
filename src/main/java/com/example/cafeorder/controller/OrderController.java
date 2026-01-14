@@ -1,12 +1,12 @@
 package com.example.cafeorder.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.cafeorder.model.dto.OrderRequest;
-import com.example.cafeorder.model.dto.OrderResponse;
 import com.example.cafeorder.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,11 +20,12 @@ public class OrderController {
 
 	/**
 	 * 커피 주문, 결제 하기 API
-	 * @param request
 	 * @return
 	 */
 	@PostMapping("/order")
-	public OrderResponse placeOrder(@RequestBody OrderRequest request) {
-		return orderService.placeOrder(OrderRequest);
+	public ResponseEntity<Void> completeOrder(@RequestBody OrderRequest orderRequest) {
+
+		orderService.completeOrder(orderRequest);
+		return ResponseEntity.ok().build();
 	}
 }

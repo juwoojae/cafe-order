@@ -2,6 +2,7 @@ package com.example.cafeorder.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +24,9 @@ public class MenuController {
 	 * @return
 	 */
 	@GetMapping("/menus")
-	public List<MenuResponse> getMenus() {
+	public ResponseEntity<List<MenuResponse>> getMenus() {
 
-		return menuService.getMenus();
+		return ResponseEntity.ok(menuService.getMenus());
 	}
 
 }

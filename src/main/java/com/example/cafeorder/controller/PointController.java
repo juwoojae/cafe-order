@@ -1,5 +1,8 @@
 package com.example.cafeorder.controller;
 
+import java.awt.*;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +27,8 @@ public class PointController {
 	 * @return
 	 */
 	@PostMapping("/charge")
-	public PointChargeResponse chargePoints(@RequestBody PointChargeRequest request) {
-		return pointService.chargePoints(request.getUserId(), request.getAmount());
+	public ResponseEntity<PointChargeResponse> chargePoints(@RequestBody PointChargeRequest request) {
+
+		return ResponseEntity.ok(pointService.chargePoints(request));
 	}
 }
